@@ -1,2 +1,4 @@
-<?php
-  echo "consult_employee";
+<form>
+    <label>Uwu</label>
+    <input type="text" placeholder="acbb">
+</form>
