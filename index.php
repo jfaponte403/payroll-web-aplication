@@ -1,36 +1,46 @@
 <?php 
-    require "./includes/db.php"
+    require "./logic/functions.php";
+    require "./logic/redirection.php";
+
+    $NOT_FOUND_ERROR_PAGE = "./pages/not_found.php";
+
+    $pagePath = null;
+    if (isset($_GET["page"]) && $_GET["page"] !== "") {
+        $pagePath = redirection($_GET["page"]);
+    }
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My PHP App</title>
+    <title>Payroll APP | Team of Teams</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/script.js"></script>
 </head>
 <body>
 <header>
-    <h1>Welcome to My PHP App</h1>
+    <?php include ("./templates/header.php") ?>
 </header>
 
 <nav>
-    <ul>
-        <li><a href="index.php?page=home">Home</a></li>
-        <li><a href="index.php?page=create">Create</a></li>
-        <li><a href="index.php?page=read">Read</a></li>
-        <li><a href="index.php?page=update">Update</a></li>
-        <li><a href="index.php?page=delete">Delete</a></li>
-    </ul>
+    <?php include ("./templates/navbar.php") ?>
 </nav>
 
 <main>
-    <?php
-    ?>
+    <section>
+        <article>
+            <?php 
+                if (!$pagePath && $pagePath !== false) echo listEmployees();
+                if ($pagePath) include ($pagePath);
+                if ($pagePath === false) include ($NOT_FOUND_ERROR_PAGE);
+            ?>
+        </article>
+    </section>
 </main>
 
 <footer>
-    <p>UwU</p>
+    <?php include ("./templates/footer.php") ?>
 </footer>
 </body>
 </html>

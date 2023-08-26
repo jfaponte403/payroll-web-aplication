@@ -1,1 +1,1 @@
-<?php
+<?php echo "<p>UwU</p>" ?>
