@@ -1,6 +1,5 @@
 <?php
-  require './logic/dotenv.php';
-  
+  include './logic/dotenv.php';
   function connectDB() {
     $mysqli = new mysqli(
       $_ENV["DB_HOST"] ?? "127.0.0.1", 

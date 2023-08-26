@@ -1,1 +1,1 @@
-<?php echo "<p>UwU</p>" ?>
+<?php echo "<p>Team Of Teams.</p>" ?>
