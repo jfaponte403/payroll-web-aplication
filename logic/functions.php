@@ -1,6 +1,6 @@
 <?php 
     require "./logic/db.php";
-    
+
     function listEmployees() {
         $queryResult = query("SELECT * FROM employee;");
         $table = "
@@ -36,4 +36,26 @@
 
         return $table;
     }
+
 ?>
+
+<!DOCTYPE html>
+<body>
+    <form action="" method="get">
+        <input type="text" name="search" id="">
+        <input type="submit" name="set" value="search">
+    </form>
+    <?php
+    if (isset($_GET['set'])) {
+        $search = ($_GET['set']);
+        $queryResult = query("SELECT * FROM employee WHERE identification LIKE '%$search';");
+        while ($row = $queryResult->fetch_array()) {
+            echo $row['identification']."<br>";
+        }
+    }
+   
+    
+    ?>
+
+</body>
+</html>
