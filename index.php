@@ -1,14 +1,13 @@
 <?php 
-    require "./logic/functions.php";
-    require "./logic/redirection.php";
-
-    $NOT_FOUND_ERROR_PAGE = "./pages/not_found.php";
-
+    require "logic/lists.php";
+    require "logic/redirection.php";
+    
+    $NOT_FOUND_ERROR_PAGE = "pages/not_found.php";
+    
     $pagePath = null;
     if (isset($_GET["page"]) && $_GET["page"] !== "") {
         $pagePath = redirection($_GET["page"]);
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +19,11 @@
 </head>
 <body>
 <header>
-    <?php include ("./templates/header.php") ?>
+    <?php include ("templates/header.php") ?>
 </header>
 
 <nav>
-    <?php include ("./templates/navbar.php") ?>
+    <?php include ("templates/navbar.php") ?>
 </nav>
 
 <main>
@@ -40,7 +39,7 @@
 </main>
 
 <footer>
-    <?php include ("./templates/footer.php") ?>
+    <?php include ("templates/footer.php") ?>
 </footer>
 
 </body>
