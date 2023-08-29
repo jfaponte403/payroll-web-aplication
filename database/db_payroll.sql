@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS accrued (
   employee_id VARCHAR(12) NOT NULL,
   salary INT NOT NULL,
   worked_days INT NOT NULL,
+  salary_worked INT NOT NULL,
   vacations_taken INT NULL,
   transport_allowance INT NULL,
   incapacity_eps INT NULL,
