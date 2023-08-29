@@ -46,6 +46,7 @@
       $this->vacationsTaken = calcVacationsTaken($salary);
       $this->transportAllowance = calcTransportAllowance($workedDays);
       $this->transportAllowance = calcTransportAllowance($workedDays);
+      $this->payEPS = calcPayEPS($salary);
       $this->payARL = calcPayARL($salary);
       $this->nigthSurcharge = calcNightSurcharge();
       $this->sundayHours = calcNightSurcharge();
