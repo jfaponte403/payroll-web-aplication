@@ -1,8 +1,13 @@
 <?php 
     require "./logic/db.php";
     
-    function listEmployees() {
-        $queryResult = query("SELECT * FROM employee;");
+    function listEmployees($searchQuery = "") {
+        $whereClause = "";
+        if (!empty($searchQuery)) {
+            $whereClause = " WHERE identification LIKE '%$searchQuery%'";
+        }
+        
+        $queryResult = query("SELECT * FROM employee" . $whereClause . ";");
         $table = "
           <table border>
               <thead>
@@ -36,4 +41,22 @@
 
         return $table;
     }
+
+    $searchResults = "";
+
+    if (isset($_POST['search'])) {
+        $id = $_POST['id'];
+        $searchResults = listEmployees($id);
+    }
+?>
+
+<h1>Search Employee</h1>
+<form action="" method="post">
+    <label for="id">ID:</label>
+    <input type="text" name="id" id="id">
+    <button type="submit" name="search">Search</button>
+</form>
+
+<?php
+    echo $searchResults;
 ?>
