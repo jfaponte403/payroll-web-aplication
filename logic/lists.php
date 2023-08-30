@@ -1,31 +1,34 @@
 <?php 
-    require "logic/db.php";
+    require "./logic/db.php";
     
-    function listEmployees() {
-        $queryResult = query("SELECT * FROM employee;");
+    function listEmployees($searchQuery = "") {
+        $whereClause = "";
+        if (!empty($searchQuery)) {
+            $whereClause = " WHERE identification LIKE '%$searchQuery%'";
+        }
+        
+        $queryResult = query("SELECT * FROM employee" . $whereClause . ";");
         $iterativeTable = $queryResult ? mysqli_fetch_assoc($queryResult) : null;
-
         $table = "
-            <table border>
-                <thead>
-                    <tr>
-                        <th>Identification</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Cost Center</th>
-                        <th>Role</th>
-                    </tr>
-                </thead>
-                <tbody>  
+          <table border>
+              <thead>
+                  <tr>
+                      <th>Identification</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Cost Center</th>
+                      <th>Role</th>
+                  </tr>
+              </thead>
+              <tbody>  
         ";
 
         if (!$iterativeTable) $table .= "
-            <tr>
-                <td colspan='5'>No hay datos</td>
-            </tr>
-        ";
-
-        while ($row = $iterativeTable) {
+        <tr>
+            <td colspan='5'>No hay datos</td>
+        </tr>";
+        
+        while ($row = mysqli_fetch_assoc($queryResult)) {
             $table .= "
                 <tr>
                     <td>".$row['identification']."</td>
@@ -44,4 +47,22 @@
 
         return $table;
     }
+
+    $searchResults = "";
+
+    if (isset($_POST['search'])) {
+        $id = $_POST['id'];
+        $searchResults = listEmployees($id);
+    }
+?>
+
+<h1>Search Employee</h1>
+<form action="" method="post">
+    <label for="id">ID:</label>
+    <input type="text" name="id" id="id">
+    <button type="submit" name="search">Search</button>
+</form>
+
+<?php
+    echo $searchResults;
 ?>
