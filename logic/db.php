@@ -1,6 +1,5 @@
 <?php
   include 'dotenv.php';
-  
   function connectDB() {
     $mysqli = new mysqli(
       $_ENV["DB_HOST"] ?? "127.0.0.1", 
