@@ -1,29 +1,26 @@
 <?php
-require('./db.php');
 
-$name = $_POST['name'];
-$lastName = $_POST['lastName'];
-$centralCost = $_POST['centralCost'];
-$rol = $_POST['rol'];
-$id = $_POST['id'];
-$salary = $_POST['salary'];
-$daysWorked = $_POST['daysWorked'];
+include("db.php");
 
-$test = query("SELECT '$name'");
+if(isset($_POST['name'])){
+    $first_name = $_POST['name'];
+    $last_name = $_POST['lastName'];
+    $centralCost = $_POST['centralCost'];
+    $rol = $_POST['rol'];
+    $id = $_POST['id'];
+    $salary = $_POST['salary'];
+    $daysWorked = $_POST['daysWorked'];
 
-if ($test) {
-    $fila = mysqli_fetch_row($test);
-    echo "result in SQL: " . $fila[0];
-} else {
-    echo "Error en la consulta: " . mysqli_error($test);
+    $query = "INSERT INTO employee(identification, first_name, last_name, cost_center_id, role_id) VALUES ('$id', '$first_name', '$last_name', '$centralCost', '$rol')";
+    $result = query($query);
+
+    if(!$result){
+        die("Could not");
+    }
+
+    header("location: ../index.php");
 }
 
-echo "<br>name: " . $name
-. "<br>lastName: ". $lastName
-. "<br>centralCost: ". $centralCost
-. "<br>rol: ". $rol
-. "<br>id: ". $id
-. "<br>salary: ". $salary
-. "<br>daysWorked: ". $daysWorked;
+?>
 
 
