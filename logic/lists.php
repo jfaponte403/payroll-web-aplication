@@ -3,57 +3,44 @@
     
     function listEmployees($searchQuery = "") {
         $whereClause = "";
+    
         if (!empty($searchQuery)) {
             $whereClause = " WHERE identification = '$searchQuery'";
         }
-
+    
         $sql = "SELECT * FROM employee" . $whereClause . ";";
+    
         $queryResult = query($sql);
-        $iterativeTable = $queryResult ? mysqli_fetch_assoc($queryResult) : null;
-        print_r($sql);
-        $table = "
-          <table border>
-              <thead>
-                  <tr>
-                      <th>Identification</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Cost Center</th>
-                      <th>Role</th>
-                  </tr>
-              </thead>
-              <tbody>  
-        ";
-
-        if (!$iterativeTable) $table .= "
-        <tr>
-            <td colspan='5'>No hay datos</td>
-        </tr>";
-        
-        while ($row = mysqli_fetch_assoc($queryResult)) {
-            $table .= "
-                <tr>
-                    <td>".$row['identification']."</td>
-                    <td>".$row['first_name']."</td>
-                    <td>".$row['last_name']."</td>
-                    <td>".$row['cost_center_id']."</td>
-                    <td>".$row['role_id']."</td>
-                </tr>
-            ";
+    
+        if ($queryResult) {
+            echo '<table border="1">';
+            echo '<tr>';
+            echo '<th>Identification</th>';
+            echo '<th>First Name</th>';
+            echo '<th>Last Name</th>';
+            echo '<th>Cost Center</th>';
+            echo '<th>Role</th>';
+            echo '</tr>';
+    
+            while ($row = mysqli_fetch_assoc($queryResult)) {
+                echo '<tr>';
+                echo '<td>' . $row['identification'] . '</td>';
+                echo '<td>' . $row['first_name'] . '</td>';
+                echo '<td>' . $row['last_name'] . '</td>';
+                echo '<td>' . $row['cost_center_id'] . '</td>';
+                echo '<td>' . $row['role_id'] . '</td>';
+                echo '</tr>';
+            }
+    
+            echo '</table>';
+        } else {
+            echo "Error executing the query.";
         }
-        
-        $table .= "
-                </tbody>
-            </table>
-        ";
-
-        return $table;
     }
+    
+    
+    
 
-    $searchResults = "";
-
-    if (isset($_POST['search'])) {
-        $id = $_POST['id'];
-        $searchResults = listEmployees($id);
-    }
+   
 ?>
+

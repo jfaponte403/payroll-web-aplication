@@ -19,12 +19,14 @@
     return ($salary/30) * 4;
   }
 
-  function calcNightSurcharge() {
-
+  function calcNightSurcharge($salary, $nightHours) {
+    $nigthHourValue = ($salary * 1.35)/240;
+    return $nigthHourValue * $nightHours;
   }
 
-  function calcSundayHours() {
-
+  function calcSundayHours($salary, $sundayHours) {
+    $sundayHoursValue = ($salary * 1.75)/240;
+    return $sundayHoursValue * $sundayHours;
   }
 
   function calcAlimentaryAllowance($workedDays) {
@@ -43,7 +45,7 @@
     private $sundayHours;
     private $alimentaryAllowance;
 
-    function __construct($salary, $workedDays) {
+    function __construct($salary, $workedDays, $nightHours, $sundayHours) {
       $this->salary = $salary;
       $this->workedDays = $workedDays;
       $this->salaryWorked = calcSalaryWorked($salary, $workedDays);
@@ -52,8 +54,8 @@
       $this->transportAllowance = calcTransportAllowance($workedDays);
       $this->payEPS = calcPayEPS($salary);
       $this->payARL = calcPayARL($salary);
-      $this->nigthSurcharge = calcNightSurcharge();
-      $this->sundayHours = calcNightSurcharge();
+      $this->nigthSurcharge = calcNightSurcharge($salary, $nightHours);
+      $this->sundayHours = calcNightSurcharge($salary, $nightHours);
       $this->alimentaryAllowance = calcAlimentaryAllowance($workedDays);
     }
 
