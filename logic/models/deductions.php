@@ -1,24 +1,24 @@
 <?php
-    function Healtandpension($n1){
-        return $n1*0.4;
+    function Healtandpension($salary){
+        return $salary*0.4;
     }
 
-    function Solidarityfund($n1){
-        if($n1>3124968){
-            return $n1*0.1;
+    function Solidarityfund($salary){
+        if($salary>3124968){
+            return $salary*0.1;
         } return 0;
     }
 
-    function Feediscount($n1, $n2){
-        return $n1-$n2;
+    function Feetodiscount($nfeetodiscount, $nfeepaid){
+        return $nfeetodiscount-$nfeepaid;
     }
 
-    function Totaldeductions($n1,$n2,$n3,$n4,$n5,$n6){
-        return $n1+$n2+$n2+$n3+$n4+$n5;
+    function Totaldeductions($healt, $pension, $solidarityfound, $quotavalue){
+        return $healt+$pension+$solidarityfound+$quotavalue;
     }
 
-    function Payrollpay($n1,$n2){
-        return $n1-$n2;
+    function Payrollpay($totalaccrued,$totaldeductions){
+        return $totalaccrued-$totaldeductions;
     }
 
     function Mountdisbursement(){};
@@ -51,20 +51,20 @@
         private $totaldeductions;
         private $totalpayroll;
 
-        function __construct($n1, $n2, $n3, $n4, $n5, $n6){
-            $this->healt = Healtandpension($n1);
-            $this->pension = Healtandpension($n1);
-            $this->solidarityfound = Solidarityfund($n1);
+        function __construct($salary, $nfeetodiscount, $nfeepaid, $healt, $pension, $solidarityfound, $quotavalue, $totalaccrued, $totaldeductions){
+            $this->healt = Healtandpension($salary);
+            $this->pension = Healtandpension($salary);
+            $this->solidarityfound = Solidarityfund($salary);
             $this->mountdisbursement = Mountdisbursement();
             $this->nfeediscounts = Nfeediscount();
             $this->datedisbursement = Datedisbursement();
             $this->nfeepaid = Nfeepaid();
-            $this->feetodiscount = Feediscount($n1,$n2);
+            $this->feetodiscount = Feetodiscount($nfeetodiscount,$nfeepaid);
             $this->payrollloan = Payrollloan();
             $this->feevalue = Feevalue();
             $this->loanbalance = Loanbalance();
-            $this->totaldeductions = Totaldeductions($n1, $n2, $n3, $n4, $n5, $n6);
-            $this->totalpayroll= Payrollpay($n1,$n2);
+            $this->totaldeductions = Totaldeductions($healt, $pension, $solidarityfound, $quotavalue);
+            $this->totalpayroll= Payrollpay($totalaccrued,$totaldeductions);
         }
 
         public function getHealt(){
