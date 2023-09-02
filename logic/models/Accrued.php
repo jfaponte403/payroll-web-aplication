@@ -19,9 +19,13 @@
     return ($salary/30) * 4;
   }
 
-  function calcNightSurcharge() {}
+  function calcNightSurcharge() {
 
-  function calcSundayHours() {}
+  }
+
+  function calcSundayHours() {
+
+  }
 
   function calcAlimentaryAllowance($workedDays) {
     return (150000/30) * $workedDays;

@@ -8,6 +8,13 @@
     if (isset($_GET["page"]) && $_GET["page"] !== "") {
         $pagePath = redirection($_GET["page"]);
     }
+
+    $search = null;
+    if (isset($_POST["search"])) {
+        $search = $_POST["id"];
+        echo $search;
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +36,14 @@
 <main>
     <section>
         <article>
+            <h1>Search Employee</h1>
+            <form action="" method="post">
+                <label for="id">ID:</label>
+                <input type="text" name="id" id="id">
+                <button type="submit" name="search">Search</button>
+            </form>
             <?php 
-                if (!$pagePath && $pagePath !== false) echo listEmployees();
+                if (!$pagePath && $pagePath !== false) echo listEmployees($search);
                 if ($pagePath) include ($pagePath);
                 if ($pagePath === false) include ($NOT_FOUND_ERROR_PAGE);
             ?>

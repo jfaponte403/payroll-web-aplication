@@ -4,11 +4,13 @@
     function listEmployees($searchQuery = "") {
         $whereClause = "";
         if (!empty($searchQuery)) {
-            $whereClause = " WHERE identification LIKE '%$searchQuery%'";
+            $whereClause = " WHERE identification = '$searchQuery'";
         }
-        
-        $queryResult = query("SELECT * FROM employee" . $whereClause . ";");
+
+        $sql = "SELECT * FROM employee" . $whereClause . ";";
+        $queryResult = query($sql);
         $iterativeTable = $queryResult ? mysqli_fetch_assoc($queryResult) : null;
+        print_r($sql);
         $table = "
           <table border>
               <thead>
@@ -54,15 +56,4 @@
         $id = $_POST['id'];
         $searchResults = listEmployees($id);
     }
-?>
-
-<h1>Search Employee</h1>
-<form action="" method="post">
-    <label for="id">ID:</label>
-    <input type="text" name="id" id="id">
-    <button type="submit" name="search">Search</button>
-</form>
-
-<?php
-    echo $searchResults;
 ?>
