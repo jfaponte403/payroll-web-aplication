@@ -1,0 +1,87 @@
+body{
+    display: grid; 
+    place-items: center;
+    height: 100vh;
+    background: linear-gradient(0deg, #edd2d9 6%, #efe4e4 95%);
+    font-family: Arial, Helvetica, sans-serif;
+    color: #807677;
+}
+
+
+.navbar {
+    background-color: #807677; 
+    overflow: hidden;
+    
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd; 
+    color: #494949;
+}
+
+
+.search {
+    float: right;
+    margin: 10px;
+}
+
+.search form {
+    display: inline-block;
+}
+
+.search label {
+    color: white;
+    margin-right: 5px;
+}
+
+.search input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+}
+
+.search button {
+    background-color: #edd2d9; 
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.search button:hover {
+    background-color: #45a049;
+}
+
+
+.custom-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+
+.custom-table td, .custom-table th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+.custom-table th {
+    background-color: #333;
+    color: white;
+}
+
+.custom-table .table-row:hover {
+    background-color: #333;
+}
+
