@@ -18,10 +18,11 @@ function Feetodiscount($nfeetodiscount, $nfeepaid)
     return $nfeetodiscount - $nfeepaid;
 }
 
-function Dateendload($datedisbursement)
-{
-    return date('Y-m-d', strtotime($datedisbursement . ' +2 months'));
+function dateEndLoad($datedisbursement, $fee){
+    $endDate = strtotime($datedisbursement . ' +' . $fee . ' months');
+    return date('Y-m-d', $endDate);
 }
+
 
 function Totaldeductions($healt, $pension, $solidarityfound, $quotavalue)
 {
@@ -33,15 +34,25 @@ function Payrollpay($totalaccrued, $totaldeductions)
     return $totalaccrued - $totaldeductions;
 }
 
-function Feevalue($loan, $fee)
-{
-    return $loan / $fee;
+function Feevalue($loan, $fee){
+    $loan = floatval($loan);
+    $fee = floatval($fee);
+
+    if ($fee != 0) {
+        return intval($loan / $fee);
+    } else {
+        // Handle the case where $fee is 0 to avoid division by zero
+        return 0; // You can choose an appropriate default value
+    }
 }
 
-function Loanbalance($loan, $paidloan)
-{
-    return $loan - $paidloan;
+
+function Loanbalance($loan, $paidLoan){
+    $loan = floatval($loan);
+    $paidLoan = floatval($paidLoan);
+    return $loan - $paidLoan;
 }
+
 
 class deductions
 {
@@ -71,7 +82,7 @@ class deductions
         $this->datedisbursement = $this->datedisbursement;
         $this->nfeepaid = $this->nfeepaid;
         $this->feetodiscount = Feetodiscount($this->nfeediscounts, $this->nfeepaid);
-        $this->payrollloan = Dateendload($this->datedisbursement);
+        $this->payrollloan = dateEndLoad($this->datedisbursement, $fee);
         $this->feevalue = Feevalue($loan, $fee);
         $this->loanbalance = Loanbalance($loan, $this->payrollloan);
         $this->totaldeductions = Totaldeductions($this->healt, $this->pension, $this->solidarityfound, $this->feevalue);
@@ -170,7 +181,7 @@ class deductions
 
     public function getFeevalue()
     {
-        return $this->feevalue;
+        return intval($this->feevalue);
     }
 
     public function setFeevalue($feevalue)
