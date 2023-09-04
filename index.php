@@ -8,11 +8,11 @@
     if (isset($_GET["page"]) && $_GET["page"] !== "") {
         $pagePath = redirection($_GET["page"]);
     }
+
     $searchResults = "";
     if (isset($_POST['id'])) {
         $searchResults = $_POST['id']; 
     }
-?>
 
 
 <!DOCTYPE html>
@@ -38,6 +38,12 @@
     <section>
             <div class="table-box">
         <article>
+            <h1>Search Employee</h1>
+            <form action="" method="post">
+                <label for="id">ID:</label>
+                <input type="text" name="id" id="id">
+                <button type="submit" name="search">Search</button>
+            </form>
             <?php 
                 if (!$pagePath && $pagePath !== false) echo listEmployees($searchResults);
                 if ($pagePath) include ($pagePath);
