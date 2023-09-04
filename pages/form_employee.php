@@ -41,6 +41,27 @@
         <label>Days Worked:</label>
         <input type="number" name="daysWorked">
 
+        <label>Loan amount:</label>
+        <input type="number" name="loanAmount">
+
+        <label>Number of installments to repay the loan:</label>
+        <input type="number" name="numOfInstallmentsToRepayTheLoan">
+
+        <label>Date when the loan was disbursed:</label>
+        <input type="date" name="dateWhenLoanDisbursed">
+
+        <label>Night Time hours Worked:</label>
+        <input type="number" name="nightTime">
+
+        <label>Holiday hours worked:</label>
+        <input type="number" name="holidayHoursWorked">
+
+        <label>Holiday hours worked:</label>
+        <input type="number" name="holidayHoursWorked">
+
+
+        <label></label>
+
         <button type="submit" >register</button>
     </form>
 </div>
