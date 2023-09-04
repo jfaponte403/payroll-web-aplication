@@ -8,32 +8,42 @@
     if (isset($_GET["page"]) && $_GET["page"] !== "") {
         $pagePath = redirection($_GET["page"]);
     }
+    $searchResults = "";
+    if (isset($_POST['id'])) {
+        $searchResults = $_POST['id']; 
+    }
 ?>
+
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Payroll APP | Team of Teams</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="assets/js/script.js"></script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+<script src="assets/js/script.js"></script>
+   
 </head>
 <body>
+
+<nav class="navbar bg-body-tertiary">
 <header>
     <?php include ("templates/header.php") ?>
 </header>
-
-<nav>
     <?php include ("templates/navbar.php") ?>
 </nav>
 
+
+
 <main>
     <section>
+            <div class="table-box">
         <article>
             <?php 
-                if (!$pagePath && $pagePath !== false) echo listEmployees();
+                if (!$pagePath && $pagePath !== false) echo listEmployees($searchResults);
                 if ($pagePath) include ($pagePath);
                 if ($pagePath === false) include ($NOT_FOUND_ERROR_PAGE);
             ?>
+            </div>
         </article>
     </section>
 </main>
@@ -41,6 +51,5 @@
 <footer>
     <?php include ("templates/footer.php") ?>
 </footer>
-
 </body>
 </html>

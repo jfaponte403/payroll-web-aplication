@@ -1,22 +1,38 @@
-body{
-    display: grid; 
+body {
+    display: grid;
     place-items: center;
-    height: 100vh;
-    background: linear-gradient(0deg, #edd2d9 6%, #efe4e4 95%);
+    min-height: 100vh; 
+    background-color: #6e7d81;
     font-family: Arial, Helvetica, sans-serif;
-    color: #807677;
+    color: white;
+    margin: 0; 
+    padding-top: 60px; 
 }
 
-
+/*navbar*/
 .navbar {
-    background-color: #807677; 
-    overflow: hidden;
-    
+    background-color: #15171d;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+}
+
+.header-container {
+    text-align: center;
+}
+
+.header-container > * {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px; 
 }
 
 .navbar a {
-    float: left;
-    display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
@@ -24,64 +40,143 @@ body{
 }
 
 .navbar a:hover {
-    background-color: #ddd; 
-    color: #494949;
+    background-color: #00f0ff;
+    color: #0d3e52;
 }
-
-
-.search {
-    float: right;
-    margin: 10px;
-}
-
-.search form {
-    display: inline-block;
-}
-
-.search label {
-    color: white;
-    margin-right: 5px;
-}
-
-.search input[type="text"] {
-    padding: 5px;
-    border: none;
-    border-radius: 3px;
-}
-
-.search button {
-    background-color: #edd2d9; 
-    color: white;
-    border: none;
-    border-radius: 3px;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-.search button:hover {
-    background-color: #45a049;
-}
-
-
+/* table of employees */
 .custom-table {
     border-collapse: collapse;
     width: 100%;
-    margin-bottom: 20px;
     border-radius: 10px;
+    table-layout: fixed; 
 }
-
 
 .custom-table td, .custom-table th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
 }
+
 .custom-table th {
-    background-color: #333;
-    color: white;
+    background-color: #156e8f;
+    color: black;
 }
 
 .custom-table .table-row:hover {
-    background-color: #333;
+    background-color: #0d3e52;
 }
 
+
+/* employee search */
+.init {
+    position: relative;
+    width: 190px;
+    height: 100px;
+    padding: 20px;
+    border-radius: 10px;
+    background: #15171d;
+    text-align: center;
+    font-size: .8rem;
+    top: 30px; 
+    left: 50%; 
+    transform: translateX(-50%);
+   
+}
+.form_group {
+    position: relative;
+    --color: #5757577e ; 
+}
+.form_input {
+    width: 100%;
+    background: none;
+    color: #706c6c;
+    font-size: 1rem;
+    padding: .6em .3em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color);
+}
+.form_input:focus + .form_label, .form_input:not(:placeholder-shown) + .form_label{
+    transform: translateY(-14px) scale(.8);
+    transform-origin: left top;
+    color: #00f0ff;
+}
+.form_label {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(10px);
+    transition: transform .5s, color .3s;
+}
+
+.form_button {
+    position: relative;
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+    margin-top: 30px;
+    border: none;
+    border-radius: .5em;   
+}
+
+/*form user*/
+.form-register-user {
+    width: 400px;
+    margin: 30px auto;
+    background: #070707;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+.form-register-user span {
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.form-register-user label {
+    font-weight: bold;
+}
+
+.form-register-user input[type="text"],
+.form-register-user input[type="number"],
+.form-register-user select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: transparent;
+}
+
+.form-register-user button {
+    width: 100%;
+    padding: 10px;
+    background: #15171d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-register-user button:hover {
+    background: #00f0ff;
+}
+
+
+.form-register-user select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 20px;
+    background-image: url('https://cdn2.iconfinder.com/data/icons/line-icons-set/24/dot-down-512.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+}

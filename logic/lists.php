@@ -13,7 +13,7 @@
         $queryResult = query($sql);
     
         if ($queryResult) {
-            echo '<table border="1">';
+            echo '<table class="custom-table">';
             echo '<tr>';
             echo '<th>Identification</th>';
             echo '<th>First Name</th>';
@@ -21,9 +21,9 @@
             echo '<th>Cost Center</th>';
             echo '<th>Role</th>';
             echo '</tr>';
-    
+        
             while ($row = mysqli_fetch_assoc($queryResult)) {
-                echo '<tr>';
+                echo '<tr class="table-row">';
                 echo '<td>' . $row['identification'] . '</td>';
                 echo '<td>' . $row['first_name'] . '</td>';
                 echo '<td>' . $row['last_name'] . '</td>';
@@ -31,7 +31,7 @@
                 echo '<td>' . $row['role_id'] . '</td>';
                 echo '</tr>';
             }
-    
+        
             echo '</table>';
         } else {
             echo "Error executing the query.";
