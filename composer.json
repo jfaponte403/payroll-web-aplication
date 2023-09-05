@@ -1,6 +1,7 @@
 {
     "require": {
         "vlucas/phpdotenv": "^5.5",
-      "ext-mysqli": "*"
+      "ext-mysqli": "*",
+        "dompdf/dompdf": "^2.0"
     }
 }

@@ -1,1 +1,1 @@
-<?php echo "<p>Team Of Teams.</p>" ?>
+<?php echo "<p class='mt-5'>App created by <b>Team Of Teams.</b></p>" ?>
