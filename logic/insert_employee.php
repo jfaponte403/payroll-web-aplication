@@ -111,6 +111,20 @@ if(isset($_POST['name'])){
     ";
     $resultLoan = query($queryLoan);
 
+    $getLastId = query("
+        SELECT MAX(id) AS last_id FROM loan;
+    ");
+
+    $row = mysqli_fetch_assoc($getLastId); // Fetch the result as an associative array
+    $lastId = $row['last_id']; // Access the 'last_id' column from the result
+    echo "The last ID is: " . $lastId;
+
+    $queryPay = "
+        INSERT INTO pay (loan_id, num_quota, date) VALUES ('$lastId', '$numOfInstallmentsToRepayTheLoan', '$formattedDate');
+    ";
+
+    $resultPay = query($queryPay);
+
     /*Create query to insert deduction*/
     $health = $deduction->getHealt();
     $pension = $deduction->getPension();
