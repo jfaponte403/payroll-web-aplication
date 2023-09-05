@@ -5,7 +5,7 @@
         $whereClause = "";
     
         if (!empty($searchQuery)) {
-            $whereClause = " WHERE identification = '$searchQuery'";
+            $whereClause = " WHERE identification LIKE '%$searchQuery%'";
         }
     
         $sql = "SELECT * FROM employee" . $whereClause . ";";
@@ -13,7 +13,7 @@
         $queryResult = query($sql);
     
         if ($queryResult) {
-            echo '<table class="custom-table">';
+            echo '<table class="table">';
             echo '<tr>';
             echo '<th>Identification</th>';
             echo '<th>First Name</th>';
@@ -29,6 +29,7 @@
                 echo '<td>' . $row['last_name'] . '</td>';
                 echo '<td>' . $row['cost_center_id'] . '</td>';
                 echo '<td>' . $row['role_id'] . '</td>';
+                echo '<td><a href="logic/generate_pdf.php?identification=' . $row['identification'] . '">PDF</td>';
                 echo '</tr>';
             }
         

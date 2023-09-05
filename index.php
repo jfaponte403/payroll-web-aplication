@@ -13,48 +13,35 @@
     if (isset($_POST['id'])) {
         $searchResults = $_POST['id']; 
     }
-
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Payroll APP | Team of Teams</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
-<script src="assets/js/script.js"></script>
-   
+    <script src="assets/js/script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<nav class="navbar bg-body-tertiary">
-<header>
-    <?php include ("templates/header.php") ?>
-</header>
+<nav class="navbar navbar-expand-lg bg-dark boder-body" data-bs-theme="dark">
     <?php include ("templates/navbar.php") ?>
 </nav>
 
-
-
-<main>
+<main class="container mt-4">
     <section>
-            <div class="table-box">
         <article>
-            <h1>Search Employee</h1>
-            <form action="" method="post">
-                <label for="id">ID:</label>
-                <input type="text" name="id" id="id">
-                <button type="submit" name="search">Search</button>
-            </form>
             <?php 
-                if (!$pagePath && $pagePath !== false) echo listEmployees($searchResults);
+                if (!$pagePath && $pagePath !== false) echo "<h1 class='text-center'>Welcome!</h1>";
                 if ($pagePath) include ($pagePath);
                 if ($pagePath === false) include ($NOT_FOUND_ERROR_PAGE);
             ?>
-            </div>
         </article>
     </section>
 </main>
 
-<footer>
+<footer class="text-center">
     <?php include ("templates/footer.php") ?>
 </footer>
 </body>

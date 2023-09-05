@@ -68,8 +68,9 @@ CREATE TABLE IF NOT EXISTS loan (
 
 -- All data about the quotes paids
 CREATE TABLE IF NOT EXISTS pay (
-  loan_id INT NOT NULL PRIMARY KEY,
+  loan_id INT NOT NULL,
   num_quota INT NOT NULL,
   date DATE NOT NULL,
+  PRIMARY KEY (loan_id, num_quota),
   FOREIGN KEY (loan_id) REFERENCES loan(id)
 )

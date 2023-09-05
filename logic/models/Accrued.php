@@ -55,7 +55,7 @@
       $this->payEPS = calcPayEPS($salary);
       $this->payARL = calcPayARL($salary);
       $this->nigthSurcharge = calcNightSurcharge($salary, $nightHours);
-      $this->sundayHours = calcNightSurcharge($salary, $nightHours);
+      $this->sundayHours = calcNightSurcharge($salary, $sundayHours);
       $this->alimentaryAllowance = calcAlimentaryAllowance($workedDays);
     }
 

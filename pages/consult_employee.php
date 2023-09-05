@@ -1,18 +1,19 @@
 
- <div class="init">
-   <form action="" method="post" class= "search">
-   <div class="form_group">
-        <input type="text" name="id" id="id" class="form_input" placeholder=" ">
-        <label class="form_label" for="id">Identification</label>
-      </div>
-        <button type="submit" name="search" class="form_button">Search</button>
+  <div class="w-25 mb-4">
+    <form action="" method="post" class= "search d-flex">
+      <input 
+        class="form-control me-2" 
+        name="id" 
+        id="id" 
+        type="search"
+        placeholder="Identification" 
+        aria-label="Search" 
+        placeholder="Ej: 2301094821"
+      >
+      <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-    </div>
-</br>
-</br>
-</br>
-</br>
+  </div>
 
 <?php
-listEmployees($searchResults);
+  listEmployees($searchResults);
 ?>
