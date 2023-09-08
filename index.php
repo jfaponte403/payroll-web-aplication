@@ -1,5 +1,5 @@
-<?php 
-    require "logic/lists.php";
+<?php
+require "logic/lists.php";
     require "logic/redirection.php";
     
     $NOT_FOUND_ERROR_PAGE = "pages/not_found.php";
