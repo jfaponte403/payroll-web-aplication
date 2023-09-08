@@ -2,7 +2,7 @@
 
 ---
 
-# Table of Contents
+# Table of Contents:
 
 - [Windows Installation](#WINDOWS-INSTALLATION)
 - [Ubuntu Installation](#UBUNTU-INSTALLATION-GUIDE)
